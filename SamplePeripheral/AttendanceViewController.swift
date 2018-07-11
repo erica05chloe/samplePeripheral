@@ -8,30 +8,33 @@
 
 import UIKit
 import CoreNFC
+import MessageUI
 
 
-class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFReaderSessionDelegate, BlePeripheralDelegate {
+class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFReaderSessionDelegate, MFMailComposeViewControllerDelegate {
     
     
     var blePer = BlePeripheral()
     var ud = UserDefaults.standard
     var session: NFCNDEFReaderSession?
     
-    let image0 = UIImage(named: "crow1")
-    let image1 = UIImage(named: "crow2")
+    let image0 = UIImage(named: "black")
+    let image1 = UIImage(named: "black")
     var count = 0
 
     @IBOutlet weak var bleBtn: UIButton!
+    @IBOutlet weak var cardBtn: UIButton!
     @IBOutlet weak var textNumber: UITextField!
-    @IBOutlet weak var perLabel: UILabel!
+//    @IBOutlet weak var perLabel: UILabel!
     
+    @IBOutlet weak var perLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         blePer.setup()
-        perLabel.text = "tap me for BLE"
+     //   perLabel.text = "tap me for BLE"
         
         textNumber.delegate = self
         textNumber.placeholder = "社員番号(半角数字)"
@@ -42,12 +45,20 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
         } else {
             textNumber.text = loadNumber()
         }
+        
+        //ボタンの装飾
+//        bleBtn.layer.borderWidth = 1.5
+//        bleBtn.layer.borderColor = UIColor.black.cgColor
+//        bleBtn.layer.cornerRadius = 5.0
+//        
+//        cardBtn.layer.borderWidth = 1.5
+//        cardBtn.layer.borderColor = UIColor.black.cgColor
+//        cardBtn.layer.cornerRadius = 5.0
     }
 
     
     //userDefaults読み込み
     func loadNumber() -> String {
-        
         let str: String = ud.object(forKey: "Number") as! String
         return str
     }
@@ -122,28 +133,65 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
         if validationCheck() {
             ud.set(1, forKey: "Attendance")
             ud.removeObject(forKey: "Number")
+            perLabel.text = "1日がんばろな！"
+            
+            //mail
+            if MFMailComposeViewController.canSendMail() {
+                let e = MFMailComposeViewController()
+                let number = textNumber.text
+                e.mailComposeDelegate = self
+                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
+                e.setSubject(number! + " 出勤") //件名
+                e.setMessageBody("送信を押してください)", isHTML: false) //本文
+                present(e, animated: false, completion: nil) //メール作成画面表示
+            } else {
+                print("作成できません")
+            }
+
         }
     }
+
     
     //退勤ボタン
     @IBAction func outWork(_ sender: UIButton) {
         if validationCheck() {
             ud.set(2, forKey: "Attendance")
             ud.removeObject(forKey: "Number")
+            perLabel.text = "お疲れさま！　　　　　　　　　　ゆっくり休みやぁ"
+            
+            //mail
+            if MFMailComposeViewController.canSendMail() {
+                let e = MFMailComposeViewController()
+                let number = textNumber.text
+                e.mailComposeDelegate = self
+                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
+                e.setSubject(number! + " 退勤") //件名
+                e.setMessageBody("送信を押してください", isHTML: false)
+                present(e, animated: false, completion: nil) //メール作成画面表示
+            } else {
+                print("作成できません")
+            }
         }
     }
     
-    
-    func peripheralManagerWriteRequest() {
-        successAlert()
-        print("callback成功")
+    //mailComposeController
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if result == MFMailComposeResult.cancelled {
+            print("送信がキャンセルされました")
+        } else if result == MFMailComposeResult.saved {
+            print("保存されました")
+        } else if result == MFMailComposeResult.failed {
+            print("送信に失敗しました")
+        } else if result == MFMailComposeResult.sent {
+            print("送信しました")
+        }
+        dismiss(animated: false, completion: nil) //閉じる
     }
     
-    
-    
-    
+  
     //BLEボタン
     @IBAction func startBLE(_ sender: AnyObject) {
+        
         count += 1
     
         if(count%2 == 0){
@@ -151,13 +199,13 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
         
             print("swich off")
             blePer.stopAdvertise()
-            perLabel.text = "tap me for BLE"
+            perLabel.text = "BLE接続やめたで！"
             
         } else if(count%2 == 1) {
             bleBtn.setImage(image1, for: UIControlState())
             print("switch on")
             blePer.startAdvertise()
-            perLabel.text = "connecting BLE!"
+            perLabel.text = "BLE接続中やで〜♩"
     
         }
 
@@ -203,6 +251,29 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
     }
     
 
+}
+
+extension AttendanceViewController: BlePeripheralDelegate {
+    func readData(data: Data) {
+        //mail
+        if MFMailComposeViewController.canSendMail() {
+            let e = MFMailComposeViewController()
+            let number = textNumber.text
+            e.mailComposeDelegate = self
+            e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
+            e.setSubject(number! + " 退勤") //件名
+            e.setMessageBody("送信を押してください", isHTML: false)
+            present(e, animated: false, completion: nil) //メール作成画面表示
+        } else {
+            print("作成できません")
+        }
+    }
+    
+    func peripheralManagerWriteRequest() {
+        successAlert()
+        print("callback 成功")
+    }
+    
 }
 
 

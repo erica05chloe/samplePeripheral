@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreBluetooth
+//import UserNotifications
 
-@objc
 protocol BlePeripheralDelegate {
   //  func peripheralManagerAdvertising()
     func peripheralManagerWriteRequest()
+    func readData(data: Data)
 }
 
 
@@ -33,9 +34,10 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
     let kServiceUUID = "2a04cfbc-62df-11e8-adc0-fa7ae01bbebc"
     let kCharacteristicUUID = "2a04cfbc-62df-11e8-adc0-fa7ae01bbebc"
     let kIndiCharaUUID = "2a04cfbc-62df-11e8-adc0-fa7ae01bbebd"
-    let localName = "SamplePer" 
-  
+    let localName = "SamplePer"
+    
     static var sharedInstance = BlePeripheral()
+    
     
     //初期化
     func setup(){
@@ -43,6 +45,7 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
         _serviceUUID = CBUUID(string: kServiceUUID)
         _characteristicUUID = CBUUID(string: kCharacteristicUUID)
         _indiCharaUUID = CBUUID(string: kIndiCharaUUID)
+
     }
     
     
@@ -133,7 +136,24 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
             print("success to write")
         
         
+       //attendanceviewで実行
         self._delegate?.peripheralManagerWriteRequest()
+        
+        
+        //プッシュ通知
+//        let content = UNMutableNotificationContent()
+//        content.title = "Success"
+//        content.subtitle = "送信完了"
+//        content.sound = UNNotificationSound.default()
+//
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+//
+//        let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+//
+//        let center = UNUserNotificationCenter.current()
+//        center.add(request)
+//        print("push")
+        
 
         }
     
@@ -148,8 +168,10 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
 
             //data
             print("\(dataToHex(data: data))")
+            
+            
+            _delegate.readData(data: data)
              }
-    
     
     //dataを文字に変換
     func dataToHex(data: Data) -> String {
@@ -169,3 +191,5 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
 
     
 }
+
+

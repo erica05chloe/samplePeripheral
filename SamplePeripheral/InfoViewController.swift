@@ -19,9 +19,6 @@ class InfoViewController: UIViewController {
 
     
     
-    @IBAction func tapToBack(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
     
     
     

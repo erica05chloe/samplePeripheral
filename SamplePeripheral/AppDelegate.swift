@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,23 +26,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //1ページ目
         let firstTab = AttendanceViewController()
-        firstTab.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "dash"), tag: 1)
+        firstTab.tabBarItem = UITabBarItem(title: "attend", image: UIImage(named: "dash"), tag: 1)
         viewControllers.append(firstTab)
         
         //2ページ目
-        let secondTab = StatusViewController()
-        secondTab.tabBarItem = UITabBarItem(title: "Status", image: UIImage(named: "pin"), tag: 2)
+        let secondTab = LogViewController()
+        secondTab.tabBarItem = UITabBarItem(title: "log", image: UIImage(named: "clock"), tag: 2)
         viewControllers.append(secondTab)
         
         //3ページ目
-        let thirdTab = LogViewController()
-        thirdTab.tabBarItem = UITabBarItem(title: "Log", image: UIImage(named: "clock"), tag: 3)
+        let thirdTab = StatusViewController()
+        thirdTab.tabBarItem = UITabBarItem(title: "status", image: UIImage(named: "pin"), tag: 3)
         viewControllers.append(thirdTab)
         
         //4ページ目
-        let fourthTab = ExitViewController()
-        fourthTab.tabBarItem = UITabBarItem(title: "Exit", image: UIImage(named: "bord"), tag: 4)
+        let fourthTab = InfoViewController()
+        fourthTab.tabBarItem = UITabBarItem(title: "list", image: UIImage(named: "desk"), tag: 4)
         viewControllers.append(fourthTab)
+        
+        //5ページ目
+        let fifthTab = ExitViewController()
+        fifthTab.tabBarItem = UITabBarItem(title: "exit", image: UIImage(named: "bord"), tag: 5)
+        viewControllers.append(fifthTab)
+        
         
         //セット
         let tabBarController = UITabBarController()
@@ -55,6 +62,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
+        
+        
+        //プッシュ通知
+//        let center = UNUserNotificationCenter.current()
+//        
+//        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+//            if granted {
+//                print("allowed")
+//            } else {
+//                print("didn't allowed")
+//            }
+//        }
         
         
         return true

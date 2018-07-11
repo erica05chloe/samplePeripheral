@@ -12,10 +12,10 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var checkList = ["窓の施錠", "総務部キャビネット", "有線放送電源", "エアコン電源", "消灯", "セキュリティ設定"]
     var ud = UserDefaults()
-    var selectCell:[String] = []
     
     @IBOutlet weak var checkListView: UITableView!
     @IBOutlet weak var textName: UITextField!
+    @IBOutlet weak var sendBtn: UIButton!
     
 
     override func viewDidLoad() {
@@ -23,6 +23,9 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         textName.delegate = self
         textName.placeholder = "氏名"
+        
+        sendBtn .isEnabled = false
+        sendBtn.backgroundColor = UIColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
         
         let displayWidth: CGFloat = self.view.frame.width
         let checkListView: UITableView = UITableView(frame: CGRect(x: 0, y: 200, width: displayWidth, height: 300))
@@ -57,21 +60,30 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "\(checkList[indexPath.row])"
-       
+        
         return cell
     
     }
     
     
-    //TODO:- 全てにcheckmarkがついたら送信できる
+    
+    var selectCell:[Int] = []
     
     //select cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+       
         
         //checkmarkをいれる
         cell?.accessoryType = .checkmark
+        selectCell.append(1)
+        print("\(selectCell)")
+
        
+        if selectCell.count == checkList.count {
+            sendBtn.isEnabled = true
+            sendBtn.backgroundColor = UIColor.init(red: 118/255, green: 214/255, blue: 255/255, alpha: 1.0)
+            }
         }
     
     
@@ -81,8 +93,18 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //checkmarkはずす
         cell?.accessoryType = .none
+        selectCell.remove(at: 0)
+        
+        print("\(selectCell)")
+
+        
+        if selectCell.count != checkList.count {
+            sendBtn.isEnabled = false
+            sendBtn.backgroundColor = UIColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+        }
     }
 
+    
     
     
     func validationCheck() -> Bool {

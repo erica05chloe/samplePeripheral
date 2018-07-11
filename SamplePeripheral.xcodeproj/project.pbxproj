@@ -13,6 +13,7 @@
 		070DA14220CA5F560093D9EA /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070DA14020CA5F560093D9EA /* ExitViewController.swift */; };
 		070DA14320CA5F560093D9EA /* ExitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070DA14120CA5F560093D9EA /* ExitViewController.xib */; };
 		070DA14420CA67910093D9EA /* AttendanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070DA14620CA67910093D9EA /* AttendanceViewController.xib */; };
+		072CC07D20EE0ED300004A7A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072CC07C20EE0ED300004A7A /* UserNotifications.framework */; };
 		076D1BE920B52DAA00401BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1BE820B52DAA00401BB6 /* AppDelegate.swift */; };
 		076D1BEB20B52DAB00401BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1BEA20B52DAB00401BB6 /* ViewController.swift */; };
 		076D1BEE20B52DAB00401BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076D1BEC20B52DAB00401BB6 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		070DA14020CA5F560093D9EA /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
 		070DA14120CA5F560093D9EA /* ExitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitViewController.xib; sourceTree = "<group>"; };
 		070DA14520CA67910093D9EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AttendanceViewController.xib; sourceTree = "<group>"; };
+		072CC07C20EE0ED300004A7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		076D1BE520B52DAA00401BB6 /* SamplePeripheral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamplePeripheral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076D1BE820B52DAA00401BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		076D1BEA20B52DAB00401BB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072CC07D20EE0ED300004A7A /* UserNotifications.framework in Frameworks */,
 				078BCB1120BBF2B300980009 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,14 +137,14 @@
 				078BCB0D20BBBDEC00980009 /* BlePeripheral.swift */,
 				070DA13C20CA5EC40093D9EA /* AttendanceViewController.swift */,
 				070DA14620CA67910093D9EA /* AttendanceViewController.xib */,
-				0790EA5520E32F1000774742 /* StatusViewController.swift */,
-				0790EA5620E32F1000774742 /* StatusViewController.xib */,
 				070DA13820CA01E00093D9EA /* LogViewController.swift */,
 				070DA13920CA01E00093D9EA /* LogViewController.xib */,
-				070DA14020CA5F560093D9EA /* ExitViewController.swift */,
-				070DA14120CA5F560093D9EA /* ExitViewController.xib */,
+				0790EA5520E32F1000774742 /* StatusViewController.swift */,
+				0790EA5620E32F1000774742 /* StatusViewController.xib */,
 				0790EA5920E3645E00774742 /* InfoViewController.swift */,
 				0790EA5A20E3645E00774742 /* InfoViewController.xib */,
+				070DA14020CA5F560093D9EA /* ExitViewController.swift */,
+				070DA14120CA5F560093D9EA /* ExitViewController.xib */,
 			);
 			path = SamplePeripheral;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 		078BCB0F20BBF2B200980009 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				072CC07C20EE0ED300004A7A /* UserNotifications.framework */,
 				078BCB1020BBF2B300980009 /* CoreBluetooth.framework */,
 			);
 			name = Frameworks;
@@ -245,6 +249,9 @@
 								enabled = 1;
 							};
 							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.WAC = {
@@ -522,6 +529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.samplePeripheral;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

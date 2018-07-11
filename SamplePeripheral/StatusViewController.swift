@@ -31,16 +31,8 @@ class StatusViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //在席状態一覧
-    @IBAction func logInfo(_ sender: UIButton) {
-        let vc = InfoViewController()
-        vc.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    
-    
 
+    //TODO:- 送信先入力
     //在席ボタン
     @IBAction func sittingSeat(_ sender: Any) {
         
