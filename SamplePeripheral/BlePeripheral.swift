@@ -13,7 +13,7 @@ import CoreBluetooth
 protocol BlePeripheralDelegate {
   //  func peripheralManagerAdvertising()
     func peripheralManagerWriteRequest()
-    func readData(data: Data)
+   // func readData(data: Data)
 }
 
 
@@ -169,8 +169,39 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
             //data
             print("\(dataToHex(data: data))")
             
+            //---mail---
+           // _delegate.readData(data: data)
             
-            _delegate.readData(data: data)
+            
+            
+            //------- P O S T ---------
+            let url = "https://httpbin.org/post"
+            let request = NSMutableURLRequest(url: URL(string: url)!)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-type")
+
+            let str1 = dataToHex(data: data)
+            print("\(str1.prefix(2))")
+            
+            //dataの後6桁が個人の番号,前2桁が出退勤情報
+            let params: [String: Any] = ["attend" : ["\(str1.suffix(6))":"\(str1.prefix(2))"]]
+            do { request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+                let task: URLSessionDataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) -> Void in
+
+                    let resultData = String(data: data!, encoding: .utf8)!
+
+                    print("resultData: \(resultData)")
+                    print("\(String(describing: response))")
+                })
+                task.resume()
+            } catch {
+                print("error: \(error)")
+                return
+            }
+            
+            
+            
+            
              }
     
     //dataを文字に変換

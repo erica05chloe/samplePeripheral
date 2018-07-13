@@ -32,6 +32,8 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
 
         blePer.setup()
      //   perLabel.text = "tap me for BLE"
@@ -136,18 +138,41 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
             perLabel.text = "1日がんばろな！"
             
             //mail
-            if MFMailComposeViewController.canSendMail() {
-                let e = MFMailComposeViewController()
-                let number = textNumber.text
-                e.mailComposeDelegate = self
-                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
-                e.setSubject(number! + " 出勤") //件名
-                e.setMessageBody("送信を押してください)", isHTML: false) //本文
-                present(e, animated: false, completion: nil) //メール作成画面表示
-            } else {
-                print("作成できません")
-            }
+//            if MFMailComposeViewController.canSendMail() {
+//                let e = MFMailComposeViewController()
+//                let number = textNumber.text
+//                e.mailComposeDelegate = self
+//                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
+//                e.setSubject(number! + " 出勤") //件名
+//                e.setMessageBody("送信を押してください)", isHTML: false) //本文
+//                present(e, animated: false, completion: nil) //メール作成画面表示
+//            } else {
+//                print("作成できません")
+//            }
 
+            //-------- P O S T --------
+            let url = "https://httpbin.org/post"
+            let request = NSMutableURLRequest(url: URL(string: url)!)
+            
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-type")
+            
+            let params: [String: Any] = ["attend" : ["01":"\(textNumber.text!)"]]
+            do { request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            
+                let task: URLSessionDataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) -> Void in
+                    
+                    let resultData = String(data: data!, encoding: .utf8)!
+                    
+                    print("resultData: \(resultData)")
+                })
+                task.resume()
+            } catch {
+                print("error: \(error)")
+                return
+            }
+            
+            
         }
     }
 
@@ -160,33 +185,55 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
             perLabel.text = "お疲れさま！　　　　　　　　　　ゆっくり休みやぁ"
             
             //mail
-            if MFMailComposeViewController.canSendMail() {
-                let e = MFMailComposeViewController()
-                let number = textNumber.text
-                e.mailComposeDelegate = self
-                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
-                e.setSubject(number! + " 退勤") //件名
-                e.setMessageBody("送信を押してください", isHTML: false)
-                present(e, animated: false, completion: nil) //メール作成画面表示
-            } else {
-                print("作成できません")
+//            if MFMailComposeViewController.canSendMail() {
+//                let e = MFMailComposeViewController()
+//                let number = textNumber.text
+//                e.mailComposeDelegate = self
+//                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
+//                e.setSubject(number! + " 退勤") //件名
+//                e.setMessageBody("送信を押してください", isHTML: false)
+//                present(e, animated: false, completion: nil) //メール作成画面表示
+//            } else {
+//                print("作成できません")
+//            }
+            
+            //-------- P O S T ------------
+            let url = "https://httpbin.org/post"
+            let request = NSMutableURLRequest(url: URL(string: url)!)
+            
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-type")
+            
+            let params: [String: Any] = ["attend" : ["02":"\(textNumber.text!)"]]
+            do { request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+                
+                let task: URLSessionDataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) -> Void in
+                    
+                    let resultData = String(data: data!, encoding: .utf8)!
+                    
+                    print("resultData: \(resultData)")
+                })
+                task.resume()
+            } catch {
+                print("error: \(error)")
+                return
             }
         }
     }
     
     //mailComposeController
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        if result == MFMailComposeResult.cancelled {
-            print("送信がキャンセルされました")
-        } else if result == MFMailComposeResult.saved {
-            print("保存されました")
-        } else if result == MFMailComposeResult.failed {
-            print("送信に失敗しました")
-        } else if result == MFMailComposeResult.sent {
-            print("送信しました")
-        }
-        dismiss(animated: false, completion: nil) //閉じる
-    }
+//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+//        if result == MFMailComposeResult.cancelled {
+//            print("送信がキャンセルされました")
+//        } else if result == MFMailComposeResult.saved {
+//            print("保存されました")
+//        } else if result == MFMailComposeResult.failed {
+//            print("送信に失敗しました")
+//        } else if result == MFMailComposeResult.sent {
+//            print("送信しました")
+//        }
+//        dismiss(animated: false, completion: nil) //閉じる
+//    }
     
   
     //BLEボタン
@@ -254,20 +301,20 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
 }
 
 extension AttendanceViewController: BlePeripheralDelegate {
-    func readData(data: Data) {
-        //mail
-        if MFMailComposeViewController.canSendMail() {
-            let e = MFMailComposeViewController()
-            let number = textNumber.text
-            e.mailComposeDelegate = self
-            e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
-            e.setSubject(number! + " 退勤") //件名
-            e.setMessageBody("送信を押してください", isHTML: false)
-            present(e, animated: false, completion: nil) //メール作成画面表示
-        } else {
-            print("作成できません")
-        }
-    }
+//    func readData(data: Data) {
+//        //mail
+//        if MFMailComposeViewController.canSendMail() {
+//            let e = MFMailComposeViewController()
+//            let number = textNumber.text
+//            e.mailComposeDelegate = self
+//            e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
+//            e.setSubject(number! + " 退勤") //件名
+//            e.setMessageBody("送信を押してください", isHTML: false)
+//            present(e, animated: false, completion: nil) //メール作成画面表示
+//        } else {
+//            print("作成できません")
+//        }
+//    }
     
     func peripheralManagerWriteRequest() {
         successAlert()
