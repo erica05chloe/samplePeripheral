@@ -7,18 +7,26 @@
 //
 
 import UIKit
-//import UserNotifications
+import Firebase
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var message: String?
+    
+    //Firebase初期化
+   /* override init(){
+        super.init()
+        //FirebaseApp.configure()
+    }*/
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        sleep(1);
+        FirebaseApp.configure()
         
         
         //tabbar 配列
@@ -64,16 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        //プッシュ通知
-//        let center = UNUserNotificationCenter.current()
-//        
-//        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-//            if granted {
-//                print("allowed")
-//            } else {
-//                print("didn't allowed")
-//            }
-//        }
+
         
         
         return true

@@ -21,12 +21,20 @@
 		076D1BF320B52DAD00401BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076D1BF120B52DAD00401BB6 /* LaunchScreen.storyboard */; };
 		076D1BFE20B52DAD00401BB6 /* SamplePeripheralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1BFD20B52DAD00401BB6 /* SamplePeripheralTests.swift */; };
 		076D1C0920B52DAD00401BB6 /* SamplePeripheralUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1C0820B52DAD00401BB6 /* SamplePeripheralUITests.swift */; };
+		077EA55C20FEBFB30091BC80 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077EA55B20FEBFB30091BC80 /* FirebaseCore.framework */; };
+		077EA5A320FF114F0091BC80 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077EA5A220FF114F0091BC80 /* FirebaseFirestore.framework */; };
+		077EA5A520FF4EC10091BC80 /* FirebaseAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077EA5A420FF4EC10091BC80 /* FirebaseAccessor.swift */; };
+		077EA5A720FF50B70091BC80 /* Mailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077EA5A620FF50B70091BC80 /* Mailer.swift */; };
 		078BCB0E20BBBDEC00980009 /* BlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078BCB0D20BBBDEC00980009 /* BlePeripheral.swift */; };
 		078BCB1120BBF2B300980009 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078BCB1020BBF2B300980009 /* CoreBluetooth.framework */; };
 		0790EA5720E32F1000774742 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0790EA5520E32F1000774742 /* StatusViewController.swift */; };
 		0790EA5820E32F1000774742 /* StatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0790EA5620E32F1000774742 /* StatusViewController.xib */; };
 		0790EA5B20E3645E00774742 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0790EA5920E3645E00774742 /* InfoViewController.swift */; };
 		0790EA5C20E3645E00774742 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0790EA5A20E3645E00774742 /* InfoViewController.xib */; };
+		07AE75EB21000E54005E0AC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07AE75EA21000E54005E0AC6 /* GoogleService-Info.plist */; };
+		2A362676A4BE49C1DA8550ED /* Pods_SamplePeripheralUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26F028015C74DCCD7EEBC4F /* Pods_SamplePeripheralUITests.framework */; };
+		7D72002D35A34CA06102C540 /* Pods_SamplePeripheral.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC952225E81B7A0B2503F0D /* Pods_SamplePeripheral.framework */; };
+		CE3CFE7DA452C7453CA56B00 /* Pods_SamplePeripheralTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEAC6EC6D065C14207DDD2CB /* Pods_SamplePeripheralTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +61,7 @@
 		070DA14020CA5F560093D9EA /* ExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitViewController.swift; sourceTree = "<group>"; };
 		070DA14120CA5F560093D9EA /* ExitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitViewController.xib; sourceTree = "<group>"; };
 		070DA14520CA67910093D9EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AttendanceViewController.xib; sourceTree = "<group>"; };
+		07226C8915EB5F9D73844308 /* Pods-SamplePeripheralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePeripheralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePeripheralTests/Pods-SamplePeripheralTests.debug.xcconfig"; sourceTree = "<group>"; };
 		072CC07C20EE0ED300004A7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		076D1BE520B52DAA00401BB6 /* SamplePeripheral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamplePeripheral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076D1BE820B52DAA00401BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +76,13 @@
 		076D1C0420B52DAD00401BB6 /* SamplePeripheralUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamplePeripheralUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		076D1C0820B52DAD00401BB6 /* SamplePeripheralUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePeripheralUITests.swift; sourceTree = "<group>"; };
 		076D1C0A20B52DAD00401BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		077EA55B20FEBFB30091BC80 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		077EA55D20FEBFB90091BC80 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		077EA5A020FF10A20091BC80 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		077EA5A220FF114F0091BC80 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		077EA5A420FF4EC10091BC80 /* FirebaseAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAccessor.swift; sourceTree = "<group>"; };
+		077EA5A620FF50B70091BC80 /* Mailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mailer.swift; sourceTree = "<group>"; };
+		077EA5A820FF50C20091BC80 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		078BCB0D20BBBDEC00980009 /* BlePeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlePeripheral.swift; sourceTree = "<group>"; };
 		078BCB1020BBF2B300980009 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		0790EA5420E0DC7F00774742 /* SamplePeripheral.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SamplePeripheral.entitlements; sourceTree = "<group>"; };
@@ -74,6 +90,15 @@
 		0790EA5620E32F1000774742 /* StatusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusViewController.xib; sourceTree = "<group>"; };
 		0790EA5920E3645E00774742 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		0790EA5A20E3645E00774742 /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		07AE75EA21000E54005E0AC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		16E9759119A05BE3BBAFBC91 /* Pods-SamplePeripheral.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePeripheral.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePeripheral/Pods-SamplePeripheral.release.xcconfig"; sourceTree = "<group>"; };
+		2DC952225E81B7A0B2503F0D /* Pods_SamplePeripheral.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamplePeripheral.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A8D7A50C629481303C3E1E9 /* Pods-SamplePeripheralUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePeripheralUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePeripheralUITests/Pods-SamplePeripheralUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A26F028015C74DCCD7EEBC4F /* Pods_SamplePeripheralUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamplePeripheralUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D88225957813B745EA8D8F /* Pods-SamplePeripheral.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePeripheral.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePeripheral/Pods-SamplePeripheral.debug.xcconfig"; sourceTree = "<group>"; };
+		AEAC6EC6D065C14207DDD2CB /* Pods_SamplePeripheralTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamplePeripheralTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1354B6C73CBC80A92AD0C52 /* Pods-SamplePeripheralUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePeripheralUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePeripheralUITests/Pods-SamplePeripheralUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CCC730E8D3E2C76B48AF3268 /* Pods-SamplePeripheralTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePeripheralTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePeripheralTests/Pods-SamplePeripheralTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +106,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				077EA5A320FF114F0091BC80 /* FirebaseFirestore.framework in Frameworks */,
+				077EA55C20FEBFB30091BC80 /* FirebaseCore.framework in Frameworks */,
 				072CC07D20EE0ED300004A7A /* UserNotifications.framework in Frameworks */,
 				078BCB1120BBF2B300980009 /* CoreBluetooth.framework in Frameworks */,
+				7D72002D35A34CA06102C540 /* Pods_SamplePeripheral.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3CFE7DA452C7453CA56B00 /* Pods_SamplePeripheralTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A362676A4BE49C1DA8550ED /* Pods_SamplePeripheralUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +141,7 @@
 				076D1C0720B52DAD00401BB6 /* SamplePeripheralUITests */,
 				076D1BE620B52DAA00401BB6 /* Products */,
 				078BCB0F20BBF2B200980009 /* Frameworks */,
+				A68121230C9EB46C3421F64C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +176,10 @@
 				0790EA5A20E3645E00774742 /* InfoViewController.xib */,
 				070DA14020CA5F560093D9EA /* ExitViewController.swift */,
 				070DA14120CA5F560093D9EA /* ExitViewController.xib */,
+				07AE75EA21000E54005E0AC6 /* GoogleService-Info.plist */,
+				077EA5A420FF4EC10091BC80 /* FirebaseAccessor.swift */,
+				077EA5A620FF50B70091BC80 /* Mailer.swift */,
+				077EA5A820FF50C20091BC80 /* Bridging-Header.h */,
 			);
 			path = SamplePeripheral;
 			sourceTree = "<group>";
@@ -170,10 +205,30 @@
 		078BCB0F20BBF2B200980009 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				077EA5A220FF114F0091BC80 /* FirebaseFirestore.framework */,
+				077EA5A020FF10A20091BC80 /* FirebaseFirestore.framework */,
+				077EA55D20FEBFB90091BC80 /* FirebaseDatabase.framework */,
+				077EA55B20FEBFB30091BC80 /* FirebaseCore.framework */,
 				072CC07C20EE0ED300004A7A /* UserNotifications.framework */,
 				078BCB1020BBF2B300980009 /* CoreBluetooth.framework */,
+				2DC952225E81B7A0B2503F0D /* Pods_SamplePeripheral.framework */,
+				AEAC6EC6D065C14207DDD2CB /* Pods_SamplePeripheralTests.framework */,
+				A26F028015C74DCCD7EEBC4F /* Pods_SamplePeripheralUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A68121230C9EB46C3421F64C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2D88225957813B745EA8D8F /* Pods-SamplePeripheral.debug.xcconfig */,
+				16E9759119A05BE3BBAFBC91 /* Pods-SamplePeripheral.release.xcconfig */,
+				07226C8915EB5F9D73844308 /* Pods-SamplePeripheralTests.debug.xcconfig */,
+				CCC730E8D3E2C76B48AF3268 /* Pods-SamplePeripheralTests.release.xcconfig */,
+				C1354B6C73CBC80A92AD0C52 /* Pods-SamplePeripheralUITests.debug.xcconfig */,
+				8A8D7A50C629481303C3E1E9 /* Pods-SamplePeripheralUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +238,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 076D1C0D20B52DAD00401BB6 /* Build configuration list for PBXNativeTarget "SamplePeripheral" */;
 			buildPhases = (
+				AF1FB354317DF8EFE6E40F0D /* [CP] Check Pods Manifest.lock */,
 				076D1BE120B52DAA00401BB6 /* Sources */,
 				076D1BE220B52DAA00401BB6 /* Frameworks */,
 				076D1BE320B52DAA00401BB6 /* Resources */,
+				EC1A6EA74E461D60425CB38F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,6 +257,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 076D1C1020B52DAD00401BB6 /* Build configuration list for PBXNativeTarget "SamplePeripheralTests" */;
 			buildPhases = (
+				BB56115776912C38B7417D05 /* [CP] Check Pods Manifest.lock */,
 				076D1BF520B52DAD00401BB6 /* Sources */,
 				076D1BF620B52DAD00401BB6 /* Frameworks */,
 				076D1BF720B52DAD00401BB6 /* Resources */,
@@ -218,6 +276,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 076D1C1320B52DAD00401BB6 /* Build configuration list for PBXNativeTarget "SamplePeripheralUITests" */;
 			buildPhases = (
+				0F92230E83310E6B8ADCB18D /* [CP] Check Pods Manifest.lock */,
 				076D1C0020B52DAD00401BB6 /* Sources */,
 				076D1C0120B52DAD00401BB6 /* Frameworks */,
 				076D1C0220B52DAD00401BB6 /* Resources */,
@@ -299,6 +358,7 @@
 			files = (
 				076D1BF320B52DAD00401BB6 /* LaunchScreen.storyboard in Resources */,
 				0790EA5820E32F1000774742 /* StatusViewController.xib in Resources */,
+				07AE75EB21000E54005E0AC6 /* GoogleService-Info.plist in Resources */,
 				0790EA5C20E3645E00774742 /* InfoViewController.xib in Resources */,
 				070DA14420CA67910093D9EA /* AttendanceViewController.xib in Resources */,
 				076D1BF020B52DAD00401BB6 /* Assets.xcassets in Resources */,
@@ -324,6 +384,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F92230E83310E6B8ADCB18D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SamplePeripheralUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF1FB354317DF8EFE6E40F0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SamplePeripheral-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB56115776912C38B7417D05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SamplePeripheralTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC1A6EA74E461D60425CB38F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SamplePeripheral/Pods-SamplePeripheral-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SamplePeripheral/Pods-SamplePeripheral-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		076D1BE120B52DAA00401BB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -334,9 +485,11 @@
 				078BCB0E20BBBDEC00980009 /* BlePeripheral.swift in Sources */,
 				070DA14220CA5F560093D9EA /* ExitViewController.swift in Sources */,
 				076D1BEB20B52DAB00401BB6 /* ViewController.swift in Sources */,
+				077EA5A520FF4EC10091BC80 /* FirebaseAccessor.swift in Sources */,
 				076D1BE920B52DAA00401BB6 /* AppDelegate.swift in Sources */,
 				0790EA5B20E3645E00774742 /* InfoViewController.swift in Sources */,
 				070DA13E20CA5EC40093D9EA /* AttendanceViewController.swift in Sources */,
+				077EA5A720FF50B70091BC80 /* Mailer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +608,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SamplePeripheral/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -508,6 +662,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SamplePeripheral/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -515,6 +670,7 @@
 		};
 		076D1C0E20B52DAD00401BB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2D88225957813B745EA8D8F /* Pods-SamplePeripheral.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SamplePeripheral/SamplePeripheral.entitlements;
@@ -527,7 +683,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.samplePeripheral;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raven-g.kerochan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -538,6 +694,7 @@
 		};
 		076D1C0F20B52DAD00401BB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16E9759119A05BE3BBAFBC91 /* Pods-SamplePeripheral.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SamplePeripheral/SamplePeripheral.entitlements;
@@ -550,7 +707,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.samplePeripheral;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raven-g.kerochan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -560,6 +717,7 @@
 		};
 		076D1C1120B52DAD00401BB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07226C8915EB5F9D73844308 /* Pods-SamplePeripheralTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -581,6 +739,7 @@
 		};
 		076D1C1220B52DAD00401BB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCC730E8D3E2C76B48AF3268 /* Pods-SamplePeripheralTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -602,6 +761,7 @@
 		};
 		076D1C1420B52DAD00401BB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1354B6C73CBC80A92AD0C52 /* Pods-SamplePeripheralUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -622,6 +782,7 @@
 		};
 		076D1C1520B52DAD00401BB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A8D7A50C629481303C3E1E9 /* Pods-SamplePeripheralUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

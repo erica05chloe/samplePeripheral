@@ -8,18 +8,11 @@
 
 import UIKit
 import CoreBluetooth
-//import UserNotifications
 
-protocol BlePeripheralDelegate {
-  //  func peripheralManagerAdvertising()
-    func peripheralManagerWriteRequest()
-   // func readData(data: Data)
-}
 
 
 class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
     
-    var _delegate: BlePeripheralDelegate!
     
     var _serviceUUID: CBUUID!
     var _characteristicUUID: CBUUID!
@@ -37,7 +30,6 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
     let localName = "SamplePer"
     
     static var sharedInstance = BlePeripheral()
-    
     
     //初期化
     func setup(){
@@ -73,7 +65,6 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
             print("add service faild.. \(error!)")
             return
         }
-
         print("サービス追加完了")
     }
     
@@ -93,9 +84,6 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if error != nil {
             print("failed to advertise")
-            
-            //FIXME:-
-           // self._delegate?.peripheralManagerAdvertising()
         }
         print("success to advertise")
     }
@@ -135,29 +123,7 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
             _peripheralManager.respond(to: requests[0], withResult: CBATTError.success)
             print("success to write")
         
-        
-       //attendanceviewで実行
-        self._delegate?.peripheralManagerWriteRequest()
-        
-        
-        //プッシュ通知
-//        let content = UNMutableNotificationContent()
-//        content.title = "Success"
-//        content.subtitle = "送信完了"
-//        content.sound = UNNotificationSound.default()
-//
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-//
-//        let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
-//
-//        let center = UNUserNotificationCenter.current()
-//        center.add(request)
-//        print("push")
-        
-
-        }
-    
-    
+    }
         //indicateRequest受信
         func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
             print("indicate受信")
@@ -169,40 +135,23 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
             //data
             print("\(dataToHex(data: data))")
             
-            //---mail---
-           // _delegate.readData(data: data)
             
-            
-            
-            //------- P O S T ---------
-            let url = "https://httpbin.org/post"
-            let request = NSMutableURLRequest(url: URL(string: url)!)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-type")
+            //受け取ったdataを送る
+            let str = dataToHex(data: data)
+            let idString = str.prefix(2) //前2桁　出退
+            let idInt = Int(idString)!
 
-            let str1 = dataToHex(data: data)
-            print("\(str1.prefix(2))")
-            
-            //dataの後6桁が個人の番号,前2桁が出退勤情報
-            let params: [String: Any] = ["attend" : ["\(str1.suffix(6))":"\(str1.prefix(2))"]]
-            do { request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-                let task: URLSessionDataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) -> Void in
+            let str4 = str.suffix(4) //後ろ4桁
+        
+            let hexString = str4
+            let hex = Int(hexString, radix: 16) ?? 0
+            print(hex)
+           
+            let accessor = FirebaseAccessor()
+            accessor.sendMail(message: String(hex))
+            accessor.sendData(cardid: String(hex), status: idInt)
 
-                    let resultData = String(data: data!, encoding: .utf8)!
-
-                    print("resultData: \(resultData)")
-                    print("\(String(describing: response))")
-                })
-                task.resume()
-            } catch {
-                print("error: \(error)")
-                return
-            }
-            
-            
-            
-            
-             }
+    }
     
     //dataを文字に変換
     func dataToHex(data: Data) -> String {
@@ -218,9 +167,6 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
         _peripheralManager.stopAdvertising()
         print("stop advertise")
     }
-    
 
-    
+
 }
-
-

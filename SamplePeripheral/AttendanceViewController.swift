@@ -8,63 +8,34 @@
 
 import UIKit
 import CoreNFC
-import MessageUI
 
 
-class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFReaderSessionDelegate, MFMailComposeViewControllerDelegate {
-    
-    
+class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFReaderSessionDelegate {
+
     var blePer = BlePeripheral()
     var ud = UserDefaults.standard
     var session: NFCNDEFReaderSession?
     
-    let image0 = UIImage(named: "black")
-    let image1 = UIImage(named: "black")
+//    let image0 = UIImage(named: "black")
+//    let image1 = UIImage(named: "black")
     var count = 0
 
     @IBOutlet weak var bleBtn: UIButton!
     @IBOutlet weak var cardBtn: UIButton!
     @IBOutlet weak var textNumber: UITextField!
-//    @IBOutlet weak var perLabel: UILabel!
-    
     @IBOutlet weak var perLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-
         blePer.setup()
-     //   perLabel.text = "tap me for BLE"
         
         textNumber.delegate = self
         textNumber.placeholder = "社員番号(半角数字)"
         
-        
-        if ud.object(forKey: "Number") == nil {
-            textNumber.text = ""
-        } else {
-            textNumber.text = loadNumber()
-        }
-        
-        //ボタンの装飾
-//        bleBtn.layer.borderWidth = 1.5
-//        bleBtn.layer.borderColor = UIColor.black.cgColor
-//        bleBtn.layer.cornerRadius = 5.0
-//        
-//        cardBtn.layer.borderWidth = 1.5
-//        cardBtn.layer.borderColor = UIColor.black.cgColor
-//        cardBtn.layer.cornerRadius = 5.0
     }
 
-    
-    //userDefaults読み込み
-    func loadNumber() -> String {
-        let str: String = ud.object(forKey: "Number") as! String
-        return str
-    }
-    
     
     //textfield
     //returnでclose
@@ -128,8 +99,6 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
     }
     
     
-    //TODO:- 
-    //どちらも送信先はDB（サーバー）
     //出勤ボタン
     @IBAction func inWork(_ sender: UIButton) {
         if validationCheck() {
@@ -137,43 +106,15 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
             ud.removeObject(forKey: "Number")
             perLabel.text = "1日がんばろな！"
             
-            //mail
-//            if MFMailComposeViewController.canSendMail() {
-//                let e = MFMailComposeViewController()
-//                let number = textNumber.text
-//                e.mailComposeDelegate = self
-//                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
-//                e.setSubject(number! + " 出勤") //件名
-//                e.setMessageBody("送信を押してください)", isHTML: false) //本文
-//                present(e, animated: false, completion: nil) //メール作成画面表示
-//            } else {
-//                print("作成できません")
-//            }
-
-            //-------- P O S T --------
-            let url = "https://httpbin.org/post"
-            let request = NSMutableURLRequest(url: URL(string: url)!)
+            let sender = FirebaseAccessor()
+            let someone = textNumber.text! + "  出勤"
             
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-type")
+            sender.sendMail(message: someone)
+            sender.sendData(cardid: textNumber.text!, status: 0)
+           
             
-            let params: [String: Any] = ["attend" : ["01":"\(textNumber.text!)"]]
-            do { request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-            
-                let task: URLSessionDataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) -> Void in
-                    
-                    let resultData = String(data: data!, encoding: .utf8)!
-                    
-                    print("resultData: \(resultData)")
-                })
-                task.resume()
-            } catch {
-                print("error: \(error)")
-                return
-            }
-            
-            
-        }
+            startMes()
+        } 
     }
 
     
@@ -184,72 +125,36 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
             ud.removeObject(forKey: "Number")
             perLabel.text = "お疲れさま！　　　　　　　　　　ゆっくり休みやぁ"
             
-            //mail
-//            if MFMailComposeViewController.canSendMail() {
-//                let e = MFMailComposeViewController()
-//                let number = textNumber.text
-//                e.mailComposeDelegate = self
-//                e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
-//                e.setSubject(number! + " 退勤") //件名
-//                e.setMessageBody("送信を押してください", isHTML: false)
-//                present(e, animated: false, completion: nil) //メール作成画面表示
-//            } else {
-//                print("作成できません")
-//            }
-            
-            //-------- P O S T ------------
-            let url = "https://httpbin.org/post"
-            let request = NSMutableURLRequest(url: URL(string: url)!)
-            
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-type")
-            
-            let params: [String: Any] = ["attend" : ["02":"\(textNumber.text!)"]]
-            do { request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-                
-                let task: URLSessionDataTask = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) -> Void in
-                    
-                    let resultData = String(data: data!, encoding: .utf8)!
-                    
-                    print("resultData: \(resultData)")
-                })
-                task.resume()
-            } catch {
-                print("error: \(error)")
-                return
-            }
+            let sender = FirebaseAccessor()
+            let someone = textNumber.text! + "  退勤"
+            sender.sendMail(message: someone)
+            sender.sendData(cardid: textNumber.text!, status: 1)
+ 
+            startMes()
         }
     }
     
-    //mailComposeController
-//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-//        if result == MFMailComposeResult.cancelled {
-//            print("送信がキャンセルされました")
-//        } else if result == MFMailComposeResult.saved {
-//            print("保存されました")
-//        } else if result == MFMailComposeResult.failed {
-//            print("送信に失敗しました")
-//        } else if result == MFMailComposeResult.sent {
-//            print("送信しました")
-//        }
-//        dismiss(animated: false, completion: nil) //閉じる
-//    }
     
-  
-    //BLEボタン
+    func startMes() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1
+        ) {
+            self.perLabel.text = "スマホからはBLEボタン　　　　　社員証からはカードボタンを　　　タップするんや！"
+        }
+    }
+            
+     //BLEボタン
     @IBAction func startBLE(_ sender: AnyObject) {
         
         count += 1
     
         if(count%2 == 0){
-            bleBtn.setImage(image0, for: UIControlState())
-        
+           // bleBtn.setImage(image0, for: UIControlState())
             print("swich off")
             blePer.stopAdvertise()
             perLabel.text = "BLE接続やめたで！"
             
         } else if(count%2 == 1) {
-            bleBtn.setImage(image1, for: UIControlState())
+          //  bleBtn.setImage(image1, for: UIControlState())
             print("switch on")
             blePer.startAdvertise()
             perLabel.text = "BLE接続中やで〜♩"
@@ -281,14 +186,14 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
            // print("error: \(error.localizedDescription)")
             print("stop NFC")
     }
-    
+   
     //読み取り成功のとき。
     func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
         for message in messages {
             for record in message.records {
-                
-                
+               
                 print(String(data: record.payload, encoding: .utf8)!)
+                print(record.typeNameFormat)
                 
                 DispatchQueue.main.async {
                     self.textNumber.text = "\(String(data: record.payload, encoding: .utf8)!)"
@@ -300,27 +205,6 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
 
 }
 
-extension AttendanceViewController: BlePeripheralDelegate {
-//    func readData(data: Data) {
-//        //mail
-//        if MFMailComposeViewController.canSendMail() {
-//            let e = MFMailComposeViewController()
-//            let number = textNumber.text
-//            e.mailComposeDelegate = self
-//            e.setToRecipients(["erica.chloe5@gmail.com"]) //宛先
-//            e.setSubject(number! + " 退勤") //件名
-//            e.setMessageBody("送信を押してください", isHTML: false)
-//            present(e, animated: false, completion: nil) //メール作成画面表示
-//        } else {
-//            print("作成できません")
-//        }
-//    }
-    
-    func peripheralManagerWriteRequest() {
-        successAlert()
-        print("callback 成功")
-    }
-    
-}
+
 
 

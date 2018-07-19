@@ -17,7 +17,7 @@ class InfoViewController: UIViewController {
         
         //とりあえずアプリ起動時にget 
         //------ G E T ----------
-        let url = URL(string: "https://httpbin.org/get")
+        let url = URL(string: "https://us-central1-ravenapp-f59c0.cloudfunctions.net/history")
         let request = URLRequest(url: url!)
         let session = URLSession.shared
         session.dataTask(with: request) {(data, response, error) in
