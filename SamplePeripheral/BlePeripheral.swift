@@ -8,8 +8,7 @@
 
 import UIKit
 import CoreBluetooth
-
-
+import AVFoundation
 
 class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
     
@@ -17,6 +16,7 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
     var _serviceUUID: CBUUID!
     var _characteristicUUID: CBUUID!
     var _indiCharaUUID: CBUUID!
+    var audioPlayerInstance: AVAudioPlayer! = nil
     
     var _peripheralManager: CBPeripheralManager!
     var _service: CBMutableService!
@@ -44,17 +44,10 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
     //peripheralの状態が変化した時の処理
     func peripheralManagerDidUpdateState(_ peripheral:CBPeripheralManager) {
         print("state: \(peripheral.state)")
-        
-        switch peripheral.state {
-            
-            //起動したらserviceを追加する
-        case CBManagerState.poweredOn:
-                addService()
-            break
-            
-        default:
-            break
+        if (peripheral.state == CBManagerState.poweredOn) {
+            addService()
         }
+        
     }
     
     
@@ -99,7 +92,6 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
         let service = CBMutableService(type: _serviceUUID, primary: true)
         service.characteristics = [_characteristicForIndicate, _characteristicForWrite]
         
-        
         _peripheralManager.add(service)
         print("\(service)")
     }
@@ -138,29 +130,29 @@ class BlePeripheral: NSObject, CBPeripheralManagerDelegate {
             
             //受け取ったdataを送る
             let str = dataToHex(data: data)
-            let idString = str.prefix(2) //前2桁　出退
-            let idInt = Int(idString)!
-
             let str4 = str.suffix(4) //後ろ4桁
-        
             let hexString = str4
             let hex = Int(hexString, radix: 16) ?? 0
             print(hex)
+            print(String(format: "%03d", hex))
+
            
             let accessor = FirebaseAccessor()
-            accessor.sendMail(message: String(hex))
-            accessor.sendData(cardid: String(hex), status: idInt)
-
+            accessor.checkData(cardId: String(format: "%03d", hex))
+            //音鳴らす
+            playSound()
+            
     }
     
+
     //dataを文字に変換
     func dataToHex(data: Data) -> String {
         return data.map {
             String(format: "%02hhx", $0)
         } .joined()
     }
-        
     
+
     //advertise停止
     func stopAdvertise() {
         

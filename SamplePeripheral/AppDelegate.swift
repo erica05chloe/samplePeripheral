@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.init()
         //FirebaseApp.configure()
     }*/
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -38,19 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewControllers.append(firstTab)
         
         //2ページ目
-        let secondTab = LogViewController()
-        secondTab.tabBarItem = UITabBarItem(title: "log", image: UIImage(named: "clock"), tag: 2)
-        viewControllers.append(secondTab)
+//        let secondTab = LogViewController()
+//        secondTab.tabBarItem = UITabBarItem(title: "log", image: UIImage(named: "clock"), tag: 2)
+//        viewControllers.append(secondTab)
         
         //3ページ目
-        let thirdTab = StatusViewController()
-        thirdTab.tabBarItem = UITabBarItem(title: "status", image: UIImage(named: "pin"), tag: 3)
-        viewControllers.append(thirdTab)
+//        let thirdTab = StatusViewController()
+//        thirdTab.tabBarItem = UITabBarItem(title: "status", image: UIImage(named: "pin"), tag: 3)
+//        viewControllers.append(thirdTab)
         
         //4ページ目
-        let fourthTab = InfoViewController()
-        fourthTab.tabBarItem = UITabBarItem(title: "list", image: UIImage(named: "desk"), tag: 4)
-        viewControllers.append(fourthTab)
+//        let fourthTab = InfoViewController()
+//        fourthTab.tabBarItem = UITabBarItem(title: "list", image: UIImage(named: "desk"), tag: 4)
+//        viewControllers.append(fourthTab)
         
         //5ページ目
         let fifthTab = ExitViewController()

@@ -13,6 +13,11 @@
 		070DA14220CA5F560093D9EA /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070DA14020CA5F560093D9EA /* ExitViewController.swift */; };
 		070DA14320CA5F560093D9EA /* ExitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070DA14120CA5F560093D9EA /* ExitViewController.xib */; };
 		070DA14420CA67910093D9EA /* AttendanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070DA14620CA67910093D9EA /* AttendanceViewController.xib */; };
+		07238F822107230F00067192 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07238F812107230F00067192 /* AVFoundation.framework */; };
+		07238F862108708900067192 /* man.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07238F852108708800067192 /* man.mp3 */; };
+		07238F882109489800067192 /* decision.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07238F872109489700067192 /* decision.mp3 */; };
+		07238F8A210955F300067192 /* SoundPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07238F89210955F300067192 /* SoundPlay.swift */; };
+		07238F8C2109561E00067192 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07238F8B2109561E00067192 /* AudioToolbox.framework */; };
 		072CC07D20EE0ED300004A7A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072CC07C20EE0ED300004A7A /* UserNotifications.framework */; };
 		076D1BE920B52DAA00401BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1BE820B52DAA00401BB6 /* AppDelegate.swift */; };
 		076D1BEB20B52DAB00401BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1BEA20B52DAB00401BB6 /* ViewController.swift */; };
@@ -62,6 +67,11 @@
 		070DA14120CA5F560093D9EA /* ExitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExitViewController.xib; sourceTree = "<group>"; };
 		070DA14520CA67910093D9EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AttendanceViewController.xib; sourceTree = "<group>"; };
 		07226C8915EB5F9D73844308 /* Pods-SamplePeripheralTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamplePeripheralTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamplePeripheralTests/Pods-SamplePeripheralTests.debug.xcconfig"; sourceTree = "<group>"; };
+		07238F812107230F00067192 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		07238F852108708800067192 /* man.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man.mp3; sourceTree = "<group>"; };
+		07238F872109489700067192 /* decision.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = decision.mp3; sourceTree = "<group>"; };
+		07238F89210955F300067192 /* SoundPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlay.swift; sourceTree = "<group>"; };
+		07238F8B2109561E00067192 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		072CC07C20EE0ED300004A7A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		076D1BE520B52DAA00401BB6 /* SamplePeripheral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamplePeripheral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076D1BE820B52DAA00401BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07238F8C2109561E00067192 /* AudioToolbox.framework in Frameworks */,
+				07238F822107230F00067192 /* AVFoundation.framework in Frameworks */,
 				077EA5A320FF114F0091BC80 /* FirebaseFirestore.framework in Frameworks */,
 				077EA55C20FEBFB30091BC80 /* FirebaseCore.framework in Frameworks */,
 				072CC07D20EE0ED300004A7A /* UserNotifications.framework in Frameworks */,
@@ -179,7 +191,10 @@
 				07AE75EA21000E54005E0AC6 /* GoogleService-Info.plist */,
 				077EA5A420FF4EC10091BC80 /* FirebaseAccessor.swift */,
 				077EA5A620FF50B70091BC80 /* Mailer.swift */,
+				07238F89210955F300067192 /* SoundPlay.swift */,
 				077EA5A820FF50C20091BC80 /* Bridging-Header.h */,
+				07238F872109489700067192 /* decision.mp3 */,
+				07238F852108708800067192 /* man.mp3 */,
 			);
 			path = SamplePeripheral;
 			sourceTree = "<group>";
@@ -205,6 +220,8 @@
 		078BCB0F20BBF2B200980009 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07238F8B2109561E00067192 /* AudioToolbox.framework */,
+				07238F812107230F00067192 /* AVFoundation.framework */,
 				077EA5A220FF114F0091BC80 /* FirebaseFirestore.framework */,
 				077EA5A020FF10A20091BC80 /* FirebaseFirestore.framework */,
 				077EA55D20FEBFB90091BC80 /* FirebaseDatabase.framework */,
@@ -311,7 +328,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.WAC = {
 								enabled = 0;
@@ -358,9 +375,11 @@
 			files = (
 				076D1BF320B52DAD00401BB6 /* LaunchScreen.storyboard in Resources */,
 				0790EA5820E32F1000774742 /* StatusViewController.xib in Resources */,
+				07238F862108708900067192 /* man.mp3 in Resources */,
 				07AE75EB21000E54005E0AC6 /* GoogleService-Info.plist in Resources */,
 				0790EA5C20E3645E00774742 /* InfoViewController.xib in Resources */,
 				070DA14420CA67910093D9EA /* AttendanceViewController.xib in Resources */,
+				07238F882109489800067192 /* decision.mp3 in Resources */,
 				076D1BF020B52DAD00401BB6 /* Assets.xcassets in Resources */,
 				070DA13B20CA01E00093D9EA /* LogViewController.xib in Resources */,
 				076D1BEE20B52DAB00401BB6 /* Main.storyboard in Resources */,
@@ -484,6 +503,7 @@
 				070DA13A20CA01E00093D9EA /* LogViewController.swift in Sources */,
 				078BCB0E20BBBDEC00980009 /* BlePeripheral.swift in Sources */,
 				070DA14220CA5F560093D9EA /* ExitViewController.swift in Sources */,
+				07238F8A210955F300067192 /* SoundPlay.swift in Sources */,
 				076D1BEB20B52DAB00401BB6 /* ViewController.swift in Sources */,
 				077EA5A520FF4EC10091BC80 /* FirebaseAccessor.swift in Sources */,
 				076D1BE920B52DAA00401BB6 /* AppDelegate.swift in Sources */,

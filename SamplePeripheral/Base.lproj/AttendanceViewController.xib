@@ -14,6 +14,7 @@
                 <outlet property="bleBtn" destination="Pdm-6T-W50" id="ncL-ww-ZKp"/>
                 <outlet property="cardBtn" destination="klN-sb-XsF" id="vSu-fe-506"/>
                 <outlet property="perLabel" destination="H1P-K0-8gB" id="3M7-5X-fwD"/>
+                <outlet property="sendBtn" destination="zNu-5E-w3p" id="x95-X1-fxZ"/>
                 <outlet property="textNumber" destination="odx-9z-13G" id="9bO-RA-WJP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,39 +25,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kero" translatesAutoresizingMaskIntoConstraints="NO" id="pOs-Ti-g7h">
-                    <rect key="frame" x="256" y="121" width="113" height="112"/>
+                    <rect key="frame" x="253" y="169" width="113" height="112"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odx-9z-13G">
-                    <rect key="frame" x="160" y="408" width="156" height="30"/>
+                    <rect key="frame" x="109" y="566" width="156" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6H-wt-10D">
-                    <rect key="frame" x="68" y="499" width="110" height="85"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="出勤">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="inWork:" destination="-1" eventType="touchUpInside" id="8BM-xv-vZ5"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klN-sb-XsF">
-                    <rect key="frame" x="219" y="282" width="85" height="86"/>
+                    <rect key="frame" x="145" y="308" width="85" height="86"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <state key="normal" image="card "/>
+                    <state key="normal" image="NFC_g"/>
                     <connections>
                         <action selector="readNFC:" destination="-1" eventType="touchUpInside" id="Mnk-1U-zOl"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdm-6T-W50">
-                    <rect key="frame" x="81" y="282" width="85" height="86"/>
+                    <rect key="frame" x="4" y="87" width="43" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button" image="black"/>
                     <connections>
@@ -71,9 +60,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ふきだし" translatesAutoresizingMaskIntoConstraints="NO" id="vds-jj-65B">
-                    <rect key="frame" x="14" y="107" width="248" height="85"/>
+                    <rect key="frame" x="8" y="169" width="248" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1P-K0-8gB">
+                    <rect key="frame" x="0.0" y="169" width="260" height="86"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <string key="text">　社員証持ってたら
+カードボタンをタップするんや！
+忘れた人は打ち込んでな！</string>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pr6-9L-EhX">
                     <rect key="frame" x="0.0" y="34" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -81,34 +80,23 @@
                         <navigationItem title="出勤・退勤" id="1ic-Jx-h2J"/>
                     </items>
                 </navigationBar>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1P-K0-8gB">
-                    <rect key="frame" x="0.0" y="108" width="264" height="86"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <string key="text">スマホからはBLEボタン　
-社員証からはカードボタンを　　　タップするんや！</string>
-                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2q2-6G-uot">
-                    <rect key="frame" x="206" y="499" width="110" height="85"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="退勤">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="outWork:" destination="-1" eventType="touchUpInside" id="VtT-IZ-Dmb"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="社員番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYg-Cm-wJ3">
-                    <rect key="frame" x="81" y="410" width="71" height="26"/>
+                    <rect key="frame" x="22" y="570" width="71" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNu-5E-w3p">
+                    <rect key="frame" x="288" y="568" width="71" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="送信">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="sendNum:" destination="-1" eventType="touchUpInside" id="OgO-er-Ewk"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -116,8 +104,8 @@
         </view>
     </objects>
     <resources>
-        <image name="black" width="358" height="377"/>
-        <image name="card " width="352" height="379"/>
+        <image name="NFC_g" width="295" height="393"/>
+        <image name="black" width="266" height="393"/>
         <image name="kero" width="1348" height="1608"/>
         <image name="ふきだし" width="300" height="107"/>
     </resources>

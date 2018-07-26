@@ -10,33 +10,66 @@
 //出退勤の時間一覧
 
 import UIKit
+import Firebase
 
-class LogViewController: UIViewController {
 
+
+
+
+
+class LogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    var defaultStore: Firestore! = Firestore.firestore()
+    
+    @IBOutlet weak var attendList: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //とりあえずアプリ起動時にget
-        //------ G E T ----------
-//        let url = URL(string: "https://httpbin.org/get")
-//        let request = URLRequest(url: url!)
-//        let session = URLSession.shared
-//        session.dataTask(with: request) {(data, response, error) in
-//            if error == nil, let data = data, let response = response as? HTTPURLResponse {
-//                print("statusCode: \(response.statusCode)")
-//                
-//                let resultData = String(data: data, encoding: .utf8)!
-//                print("resultData: \(resultData)")
+        
+//        attendList.delegate = self
+//        attendList.dataSource = self
+//
+//        let allList = defaultStore.collection("histories")
+//        let query = allList.order(by: "createdAt", descending: true).limit(to: 30)
+//        query.getDocuments(){(querySnapShot, err) in
+//            if let err = err {
+//                print("Error: \(err)")
+//            } else {
+//                for document in querySnapShot!.documents {
+//                   // print("\(document.documentID) => \(document.data())")
+//
+//                    let name = document.get("cardId") as! String
+//                    let time = document.get("createdAt") as! Date
+//                    let attend = document.get("status") as! Int
+//
+//                    print("\(name)" + "\(time)" + "\(attend)")
+//
+//                }
 //            }
-//        }.resume()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+//
+//        }
     }
     
 
-   
+    override func viewWillAppear(_ animated: Bool) {
+        
+       
+    }
+    
+    //TODO:-
+    //tableView 行数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    //TODO:-
+    //tableView セルに表示する文字
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        
+       
+        return cell
+    }
+
     
 }
