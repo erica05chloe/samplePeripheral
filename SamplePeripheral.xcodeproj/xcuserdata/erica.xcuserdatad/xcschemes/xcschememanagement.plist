@@ -7,7 +7,25 @@
 		<key>SamplePeripheral.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>076D1BE420B52DAA00401BB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>076D1BF820B52DAD00401BB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>076D1C0320B52DAD00401BB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

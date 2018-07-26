@@ -14,9 +14,6 @@ import Firebase
 
 
 
-
-
-
 class LogViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var defaultStore: Firestore! = Firestore.firestore()
