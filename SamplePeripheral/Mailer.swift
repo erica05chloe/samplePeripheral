@@ -48,15 +48,15 @@ class Mailer {
         let smtpSession = MCOSMTPSession()
         smtpSession.hostname = "smtp.gmail.com"
         smtpSession.port = 465
-        smtpSession.username = "raven.ericaa@gmail.com"
-        smtpSession.password = "erica0409"
+        smtpSession.username = "test.skb.raven@gmail.com"
+        smtpSession.password = "ravenraben2016!"
         smtpSession.connectionType = .TLS
         
         // Set
         let builder = MCOMessageBuilder()
         let header = MCOMessageHeader()
-        header.from = MCOAddress(mailbox: "raven.ericaa@gmail.com")
-        header.to = [MCOAddress(mailbox: "raven.ericaa@gmail.com")]
+        header.from = MCOAddress(mailbox: "timelog@raven-g.com")
+        header.to = [MCOAddress(mailbox: "timelog@raven-g.com")]
         header.subject = "退室管理"
         builder.header = header
         // text part

@@ -103,6 +103,8 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
             let someone = textNumber.text!
             //Firebaseを参照して0なら1を、1なら0をstatusにおく
             sender.checkData(cardId: someone)
+            perLabel.text = "送信できたで！"
+            startMes()
             //おとならす？
             playSound()
             textNumber.text = ""
@@ -148,7 +150,7 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
     func startMes() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1
         ) {
-            self.perLabel.text = "社員証持ってたら\nカードボタンをタップするんや！忘れた人は打ち込んでな！"
+            self.perLabel.text = "社員証持ってたら\nカードボタンをタップするんや！\n忘れた人は打ち込んでな！"
         }
     }
             
@@ -158,18 +160,17 @@ class AttendanceViewController: UIViewController, UITextFieldDelegate, NFCNDEFRe
         count += 1
     
         if(count%2 == 0){
-            bleBtn.setImage(image0, for: UIControlState())
-            print("swich off")
-            blePer.stopAdvertise()
-            perLabel.text = "アドバタイズやめたで！"
-            startMes()
+            bleBtn.setImage(image1, for: UIControlState())
+            print("swich on")
+            blePer.startAdvertise()
+            perLabel.text = "アドバタイズ中やで〜♪"
             
         } else if(count%2 == 1) {
-            bleBtn.setImage(image1, for: UIControlState())
-            print("switch on")
-            blePer.startAdvertise()
-            perLabel.text = "アドバタイズ中やで〜♩"
-    
+            bleBtn.setImage(image0, for: UIControlState())
+            print("switch off")
+            blePer.stopAdvertise()
+            perLabel.text = "アドバタイズやめたで"
+            startMes()
         }
     }
 

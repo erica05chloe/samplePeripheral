@@ -75,7 +75,7 @@ class FirebaseAccessor {
                 var last: QueryDocumentSnapshot? = nil
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    
+            
                     let newDate = document.get("createdAt") as! Date
                     if last != nil {
                         let lastDate = last!.get("createdAt") as! Date
@@ -84,10 +84,10 @@ class FirebaseAccessor {
                         }
                     } else {
                         last = document
-                        
                     }
                 }
-                //status nill check
+                //status情報のない人は1で登録する
+                
                 if let nowStatus = last?.get("status") as? Int {
                     var sendStatus = 0
                     switch nowStatus {
