@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExitViewController" customModule="SamplePeripheral" customModuleProvider="target">
             <connections>
                 <outlet property="checkListView" destination="hb3-mm-nhh" id="d8D-3B-wNI"/>
-                <outlet property="sendBtn" destination="hgd-NI-SMi" id="uau-CX-4we"/>
+                <outlet property="sendBtn" destination="hgd-NI-SMi" id="Gli-5j-vnP"/>
                 <outlet property="textName" destination="9sa-01-bEL" id="YPC-9C-Ilk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -38,7 +38,7 @@
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="tapToSend:" destination="-1" eventType="touchUpInside" id="GhG-N7-dPa"/>
+                        <action selector="tapToSend:" destination="-1" eventType="touchUpInside" id="iyT-Op-Rok"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="氏名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNk-EU-2XO">

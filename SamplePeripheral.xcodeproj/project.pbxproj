@@ -13,12 +13,10 @@
 		070DA14220CA5F560093D9EA /* ExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070DA14020CA5F560093D9EA /* ExitViewController.swift */; };
 		070DA14320CA5F560093D9EA /* ExitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070DA14120CA5F560093D9EA /* ExitViewController.xib */; };
 		070DA14420CA67910093D9EA /* AttendanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070DA14620CA67910093D9EA /* AttendanceViewController.xib */; };
-		07238F822107230F00067192 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07238F812107230F00067192 /* AVFoundation.framework */; };
 		07238F862108708900067192 /* man.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07238F852108708800067192 /* man.mp3 */; };
 		07238F882109489800067192 /* decision.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07238F872109489700067192 /* decision.mp3 */; };
 		07238F8A210955F300067192 /* SoundPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07238F89210955F300067192 /* SoundPlay.swift */; };
 		07238F8C2109561E00067192 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07238F8B2109561E00067192 /* AudioToolbox.framework */; };
-		072CC07D20EE0ED300004A7A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072CC07C20EE0ED300004A7A /* UserNotifications.framework */; };
 		076D1BE920B52DAA00401BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1BE820B52DAA00401BB6 /* AppDelegate.swift */; };
 		076D1BEB20B52DAB00401BB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076D1BEA20B52DAB00401BB6 /* ViewController.swift */; };
 		076D1BEE20B52DAB00401BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 076D1BEC20B52DAB00401BB6 /* Main.storyboard */; };
@@ -117,10 +115,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				07238F8C2109561E00067192 /* AudioToolbox.framework in Frameworks */,
-				07238F822107230F00067192 /* AVFoundation.framework in Frameworks */,
 				077EA5A320FF114F0091BC80 /* FirebaseFirestore.framework in Frameworks */,
 				077EA55C20FEBFB30091BC80 /* FirebaseCore.framework in Frameworks */,
-				072CC07D20EE0ED300004A7A /* UserNotifications.framework in Frameworks */,
 				078BCB1120BBF2B300980009 /* CoreBluetooth.framework in Frameworks */,
 				7D72002D35A34CA06102C540 /* Pods_SamplePeripheral.framework in Frameworks */,
 			);
@@ -696,7 +692,7 @@
 				CODE_SIGN_ENTITLEMENTS = SamplePeripheral/SamplePeripheral.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z4CH2GS5V9;
+				DEVELOPMENT_TEAM = 6TUV248S7F;
 				INFOPLIST_FILE = SamplePeripheral/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -720,7 +716,7 @@
 				CODE_SIGN_ENTITLEMENTS = SamplePeripheral/SamplePeripheral.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z4CH2GS5V9;
+				DEVELOPMENT_TEAM = 6TUV248S7F;
 				INFOPLIST_FILE = SamplePeripheral/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -729,6 +725,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.raven-g.kerochan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -742,7 +739,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U2KQ9C5AY;
+				DEVELOPMENT_TEAM = 6TUV248S7F;
 				INFOPLIST_FILE = SamplePeripheralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -764,7 +761,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U2KQ9C5AY;
+				DEVELOPMENT_TEAM = 6TUV248S7F;
 				INFOPLIST_FILE = SamplePeripheralTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -785,7 +782,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U2KQ9C5AY;
+				DEVELOPMENT_TEAM = 6TUV248S7F;
 				INFOPLIST_FILE = SamplePeripheralUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -806,7 +803,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U2KQ9C5AY;
+				DEVELOPMENT_TEAM = 6TUV248S7F;
 				INFOPLIST_FILE = SamplePeripheralUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

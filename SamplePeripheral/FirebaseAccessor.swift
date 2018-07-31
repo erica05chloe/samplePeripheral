@@ -86,6 +86,7 @@ class FirebaseAccessor {
                         last = document
                     }
                 }
+                
                 //status情報のない人は1で登録する
                 
                 if let nowStatus = last?.get("status") as? Int {

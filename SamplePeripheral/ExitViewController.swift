@@ -16,6 +16,7 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     var selectCell:[Int] = []
+//    var dataArray = [["name": "1", "check": "Yes"],["name": "2", "check": "Yes"], ["name": "3", "check": "Yes"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,6 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
         checkListView.allowsMultipleSelection = true
         checkListView.tableFooterView = UIView(frame: .zero)
         self.view.addSubview(checkListView)
-        
     }
 
   
@@ -49,19 +49,30 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
     //checkListのmethod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return checkList.count
+//        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "\(checkList[indexPath.row])"
+//        cell.textLabel?.text = dataArray[indexPath.row]["name"]
+//        cell.accessoryType = dataArray[indexPath.row]["check"] == "Yes" ? UITableViewCellAccessoryType.checkmark : .none
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
     
+//        func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//            let check = (dataArray[indexPath.row]["check"] == "Yes") ? "No" : "Yes"
+//            dataArray[indexPath.row]["check"] = check
+//            tableView.cellForRow(at: indexPath)?.accessoryType = (check == "Yes") ? .checkmark : .none
+//            tableView.cellForRow(at: indexPath)?.accessoryType = (check == "Yes") ? .checkmark : .none
+//            return indexPath
+//        }
 
     //select cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-
        // checkmarkをいれる
         cell?.accessoryType = .checkmark
         selectCell.append(1)
@@ -70,19 +81,18 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
         if selectCell.count == checkList.count {
             sendBtn.isEnabled = true
             sendBtn.backgroundColor = UIColor.init(red: 118/255, green: 214/255, blue: 255/255, alpha: 1.0)
-            }
         }
+    }
 
     //selectはずれたとき
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
+
         let cell = tableView.cellForRow(at: indexPath)
         //checkmarkはずす
         cell?.accessoryType = .none
         selectCell.remove(at: 0)
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         if selectCell.count != checkList.count {
             sendBtn.isEnabled = false
             sendBtn.backgroundColor = UIColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
@@ -136,19 +146,23 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         finalAlert()
         textName.text = ""
-        
+
         //TODO:-
         //全選択解除
         for i in 0..<checkList.count {
+            let indexPaths = checkListView.indexPathForSelectedRow!
+            
             let indexPath = IndexPath(row: i, section: 0)
             let cell = checkListView.cellForRow(at: indexPath)
             cell?.accessoryType = .none
-            checkListView.deselectRow(at: indexPath, animated: true)
-            print("checkList")
-       // }; reloadInputViews()
-        };self.checkListView.reloadData()
+            checkListView.deselectRow(at: indexPaths, animated: true)
+
+
+        }; reloadInputViews()
+//        };self.checkListView.reloadData()
         sendBtn.isEnabled = false
         sendBtn.backgroundColor = UIColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
-  }
+       }
+
 
 }
