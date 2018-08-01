@@ -12,12 +12,11 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var checkList = ["窓の施錠", "総務部キャビネット", "有線放送電源", "エアコン電源", "消灯", "セキュリティ設定"]
     
-    @IBOutlet weak var checkListView: UITableView!
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
+    var checkListView: UITableView = UITableView()
     var selectCell:[Int] = []
-//    var dataArray = [["name": "1", "check": "Yes"],["name": "2", "check": "Yes"], ["name": "3", "check": "Yes"]]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,18 +26,24 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
         sendBtn.backgroundColor = UIColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
         
         let displayWidth: CGFloat = self.view.frame.width
-        let checkListView: UITableView = UITableView(frame: CGRect(x: 0, y: 200, width: displayWidth, height: 300))
+        checkListView = UITableView(frame: CGRect(x: 0, y: 200, width: displayWidth, height: 300))
         checkListView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         checkListView.dataSource = self
         checkListView.delegate = self
-        
-    //複数 true, 単一 false
         checkListView.allowsMultipleSelection = true
         checkListView.tableFooterView = UIView(frame: .zero)
         self.view.addSubview(checkListView)
     }
-
-  
+    
+    //viewWillAppear
+//    override func viewWillAppear(_ animated: Bool) {
+//        if let indexPathForSelectedRow = checkListView.indexPathForSelectedRow{
+//            checkListView.deselectRow(at: indexPathForSelectedRow, animated: true)
+//            let cell = checkListView.cellForRow(at: indexPathForSelectedRow)
+//            cell?.accessoryType = .none
+//        }
+//    }
+    
     //textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //returnで閉じるキーボード
@@ -49,34 +54,29 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
     //checkListのmethod
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return checkList.count
-//        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(checkList[indexPath.row])"
-//        cell.textLabel?.text = dataArray[indexPath.row]["name"]
-//        cell.accessoryType = dataArray[indexPath.row]["check"] == "Yes" ? UITableViewCellAccessoryType.checkmark : .none
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        cell?.textLabel?.text = checkList[indexPath.row]
+        cell?.selectionStyle = UITableViewCellSelectionStyle.none
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        return cell
+        //cellの状態を確認する
+        let selectedIndexPaths = tableView.indexPathsForSelectedRows
+        if selectedIndexPaths != nil && (selectedIndexPaths?.contains(indexPath))! {
+            cell?.accessoryType = .checkmark
+        } else {
+            cell?.accessoryType = .none
+        }
+        return cell!
     }
-    
-//        func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//            let check = (dataArray[indexPath.row]["check"] == "Yes") ? "No" : "Yes"
-//            dataArray[indexPath.row]["check"] = check
-//            tableView.cellForRow(at: indexPath)?.accessoryType = (check == "Yes") ? .checkmark : .none
-//            tableView.cellForRow(at: indexPath)?.accessoryType = (check == "Yes") ? .checkmark : .none
-//            return indexPath
-//        }
 
-    //select cell
+    //selectされたとき
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-       // checkmarkをいれる
         cell?.accessoryType = .checkmark
         selectCell.append(1)
-        print("\(selectCell)")
+        print("\(String(describing: cell?.textLabel?.text))")
 
         if selectCell.count == checkList.count {
             sendBtn.isEnabled = true
@@ -86,12 +86,11 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     //selectはずれたとき
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
         let cell = tableView.cellForRow(at: indexPath)
-        //checkmarkはずす
         cell?.accessoryType = .none
         selectCell.remove(at: 0)
-        tableView.deselectRow(at: indexPath, animated: true)
+        print("\(String(describing: cell?.textLabel?.text))")
+//        tableView.deselectRow(at: indexPath, animated: true)
 
         if selectCell.count != checkList.count {
             sendBtn.isEnabled = false
@@ -131,8 +130,8 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
     func finalAlert() {
         let alert: UIAlertController = UIAlertController(title: "送信完了", message: "お疲れ様でした", preferredStyle: UIAlertControllerStyle.alert)
         let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
-            (action: UIAlertAction!) -> Void in } )
-        
+            (action: UIAlertAction!) -> Void in })
+
         alert.addAction(defaultAction)
         present(alert, animated: true, completion: nil)
     }
@@ -143,26 +142,17 @@ class ExitViewController: UIViewController, UITableViewDelegate, UITableViewData
         if validationCheck() {
         let fireAcce = FirebaseAccessor()
         fireAcce.sendLast(message: textName.text!)
-        }
         finalAlert()
         textName.text = ""
-
-        //TODO:-
-        //全選択解除
         for i in 0..<checkList.count {
-            let indexPaths = checkListView.indexPathForSelectedRow!
-            
             let indexPath = IndexPath(row: i, section: 0)
-            let cell = checkListView.cellForRow(at: indexPath)
-            cell?.accessoryType = .none
-            checkListView.deselectRow(at: indexPaths, animated: true)
-
-
-        }; reloadInputViews()
-//        };self.checkListView.reloadData()
+            checkListView.deselectRow(at: indexPath, animated: true)
+        };self.checkListView.reloadData()
+        selectCell.removeAll()
         sendBtn.isEnabled = false
         sendBtn.backgroundColor = UIColor.init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)
+        }
        }
-
+    
 
 }

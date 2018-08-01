@@ -14,8 +14,8 @@ class Mailer {
         let smtpSession = MCOSMTPSession()
         smtpSession.hostname = "smtp.gmail.com"
         smtpSession.port = 465
-        smtpSession.username = "test.skb.raven@gmail.com"
-        smtpSession.password = "ravenraben2016!"
+        smtpSession.username = "raven.ericaa@gmail.com"
+        smtpSession.password = "erica0409"
         smtpSession.connectionType = .TLS
 
         //timelog@raven-g.com

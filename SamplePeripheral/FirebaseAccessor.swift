@@ -86,6 +86,12 @@ class FirebaseAccessor {
                         last = document
                     }
                 }
+                //cardIdのなかったものは全員　1:出勤　状態
+                if last == nil {
+                    print("cardID nothing")
+                    self.sendData(cardid: cardId, status: 1)
+                    self.sendMail(message: cardId, status: " 1")
+                }
                 
                 //status情報のない人は1で登録する
                 
@@ -116,6 +122,5 @@ class FirebaseAccessor {
             }
         }
     }
-    
 
 }
